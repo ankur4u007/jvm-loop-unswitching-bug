@@ -30,13 +30,13 @@ public class JvmBug {
         final BestMatchSpecFactory factory = new BestMatchSpecFactory();
         final CookieSpec cookieSpec = factory.newInstance(new SyncBasicHttpParams());
 
-        ExecutorService executorService = Executors.newFixedThreadPool(100);
-        for (int i = 0; i < 50000; i++) {
+        ExecutorService executorService = Executors.newFixedThreadPool(500);
+        for (int i = 0; i < 500000; i++) {
             executorService.submit(new Runnable() {
                 @Override
                 public void run() {
                     List<Cookie> someCookies = new ArrayList<Cookie>();
-                    for (int j = 0; j < 5; j++) {
+                    for (int j = 0; j < 10; j++) {
                         BasicClientCookie c = new BasicClientCookie(random(20), randomAlphanumeric(300));
                         someCookies.add(c);
                     }
